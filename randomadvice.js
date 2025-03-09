@@ -1,19 +1,21 @@
-const flipCoin = new Promise((resolve, reject) => {
-    let result = Math.random();
-    if (result < 0.5) {
-      resolve("Heads");
-    } else {
-      reject("Tails");
-    }
-  });
+// const flipCoin = new Promise((resolve, reject) => {
+//     let result = Math.random();
+//     if (result < 0.5) {
+//       resolve("Heads");
+//     } else {
+//       reject("Tails");
+//     }
+//   });
 
-flipCoin
-  .then((message) => {
-    console.log(message);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// flipCoin
+//   .then((message) => {
+//     console.log(message);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+const randomAdviceId = Math.floor(Math.random()*255);
 
 const fetchAdviceById = (id) => {
   fetch(`https://api.adviceslip.com/advice/${id}`).then((response) => {
@@ -31,4 +33,4 @@ const fetchAdviceById = (id) => {
   })
 };
 
-fetchAdviceById(220);
+fetchAdviceById(randomAdviceId);
