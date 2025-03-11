@@ -1,21 +1,22 @@
-// const flipCoin = new Promise((resolve, reject) => {
-//     let result = Math.random();
-//     if (result < 0.5) {
-//       resolve("Heads");
-//     } else {
-//       reject("Tails");
-//     }
-//   });
+const flipCoin = () => {
+  return new Promise((resolve, reject) => {
+    let flip = Math.random();
+    flip < 0.5 ? resolve("Heads") : reject("Tails");
+  });
+};
 
-// flipCoin
-//   .then((message) => {
-//     console.log(message);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+const flipCoinResult = async () => {
+  try {
+    const coinFlip = await flipCoin();
+    console.log(coinFlip.resolve);
+  } catch (error) {
+    console.error("There is no coin.", error);
+  }
+};
 
-const randomAdviceId = Math.floor(Math.random()*255);
+flipCoinResult();
+
+const randomAdviceId = Math.floor(Math.random() * 255);
 
 const fetchAdviceById = async (id) => {
   try {
