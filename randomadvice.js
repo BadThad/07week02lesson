@@ -17,20 +17,18 @@
 
 const randomAdviceId = Math.floor(Math.random()*255);
 
-const fetchAdviceById = (id) => {
-  fetch(`https://api.adviceslip.com/advice/${id}`).then((response) => {
+const fetchAdviceById = async (id) => {
+  try {
+    const response = await fetch(`https://api.adviceslip.com/advice/${id}`);
     if (!response.ok) {
-        throw new Error("No network response.");
+      throw new Error("No network response.");
     }
-    return response.json();
-  })
-  .then((data) => {
+    const data = await response.json();
     const advice = data.slip.advice;
-    console.log(`${advice}`)
-  })
-  .catch((error) => {
-    console.error("Sorry, we have no new advice for you.", error)
-  })
+    console.log(`${advice}`);
+  } catch (error) {
+    console.error("Sorry, we have no new advice for you.", error);
+  }
 };
 
 fetchAdviceById(randomAdviceId);
